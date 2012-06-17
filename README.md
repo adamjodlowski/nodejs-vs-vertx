@@ -29,9 +29,9 @@ Benchmarks were performed using Siege. All test data is generated on the fly.
 
 Request adds a random JSON document to database:
 
-  author: String(16)
-  date: Date
-  content: String(160)
+    author: String(16)
+    date: Date
+    content: String(160)
 
 and gets 100 already stored documents in response.
 
@@ -55,8 +55,8 @@ Benchmarking command: siege -c100 -d1 -r100 http://localhost:1337/post
   </tr>
   <tr>
     <td>Elapsed time</td>
+    <td>188.38 secs</td>
     <td>64.76 secs</td>
-    <td>10000 hits</td>
   </tr>
   <tr>
     <td>Data transferred</td>
@@ -104,6 +104,8 @@ Benchmarking command: siege -c100 -d1 -r100 http://localhost:1337/post
     <td>0.00</td>
   </tr>
 </table>
+
+
 
 Fun facts
 ---------
