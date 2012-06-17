@@ -1,7 +1,7 @@
-nodejs-vs-vertx
-===============
+Node.js vs vert.x
+=================
 
-*WORK IN PROGRESS*
+**WORK IN PROGRESS**
 
 Simple and naive Node.js vs vert.x benchmark. I've written it to check if there's any significant performance difference between Node.js (which is getting more popular than even before and undoubtedly more stable and mature) and new kid on the block -- vert.x (which shares the asynchronous and message-oriented philosophy with Node.js). I'm playing with Node since v0.2, this benchmark took me 2 hours of work mostly due to trial-and-error approach to vert.x, so the code may not be the most optimized and sophisticated.
 
@@ -111,7 +111,7 @@ Benchmarking command: siege -c100 -d1 -r100 http://localhost:1337/post
 
 Short JSON was returned in response to every request, no calculations performed. Node.js benchmark was aborted by Siege due to 'excessive socket failure'.
 
-Benchmarking command: siege -c100 -b -r1000 http://localhost:1338/hello
+Benchmarking command: siege -c100 -b -r1000 http://localhost:1337/hello
 
 <table>
   <tr>
@@ -184,7 +184,7 @@ Benchmarking command: siege -c100 -b -r1000 http://localhost:1338/hello
 Conclusions
 -----------
 
-* Vert.x sent more data down the tubes, I suppose it's caused by different 'Date' header formatting (it uses Rhino's NativeDate instead of JavaScripts Date). I might look into it in the future.
+* Vert.x sent more data down the tubes, I suppose it's caused by different 'Date' header formatting (it uses Rhino's NativeDate instead of JavaScript's Date). It also prints slightly longer 'X-Response-Timeout' (e.g. 13.0 instead of 13). I might look into it in the future.
 
 Fun facts
 ---------
