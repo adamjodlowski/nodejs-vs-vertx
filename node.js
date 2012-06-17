@@ -56,9 +56,6 @@ server.get('/post', function(req, res) {
           res.send(500);
         } else {
 
-          // a little bit extra work
-          fibonacci(30);
-
           res.send(200, data);
 
         }
@@ -89,6 +86,15 @@ server.get('/render', function(req, res) {
 
 });
 
+// fibonacci route handler
+
+server.get('/fibonacci', function(req, res) {
+
+  fibonacci(30);
+
+  res.send(200, {fibonacci: 'calculated'});
+
+});     
 
 // starting server
 

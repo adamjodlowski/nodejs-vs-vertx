@@ -56,9 +56,6 @@ routeMatcher.get('/post', function(req, res) {
           
           response = JSON.stringify(reply.results);
 
-          // a little bit extra work
-          fibonacci(30);
-
           var endDate = new Date();
 
           req.response.putAllHeaders({
@@ -156,6 +153,29 @@ routeMatcher.get('/render', function(req, res) {
   });
 
   req.response.end(JSON.stringify({page: response}));
+  req.response.close();
+
+});
+
+// fibonacci route handler
+
+routeMatcher.get('/fibonacci', function(req, res) {
+
+  var startDate = new Date();
+
+  fibonacci(30);
+
+  var endDate = new Date();
+
+  req.response.putAllHeaders({
+    'Content-Type': 'application/json',
+    'Date': endDate.toString(),
+    'Connection': 'close',
+    'X-Response-Time': endDate - startDate,
+    'Server': 'vert.x vs Node.js server'
+  });
+
+  req.response.end(JSON.stringify({fibonacci: 'calculated'}));
   req.response.close();
 
 });
