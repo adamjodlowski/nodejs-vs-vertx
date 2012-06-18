@@ -42,77 +42,11 @@ Request adds a random JSON document to database:
     date: Date
     content: String(160)
 
-and gets 100 already stored documents in response.
+and gets 100 already stored documents in response (no sorting).
 
 Benchmarking command: **siege -c100 -d1 -r100 http://localhost:1337/post**
 
-<table>
-  <tr>
-    <th></th>
-    <th>[1.1] Node.js (default)</th>
-    <th>[1.2] vert.x (default)</th>
-  </tr>
-  <tr>
-    <td>Transactions</td>
-    <td>10000 hits</td>
-    <td>10000 hits</td>
-  </tr>
-  <tr>
-    <td>Availability</td>
-    <td>100.00 %</td>
-    <td>100.00 %</td>
-  </tr>
-  <tr>
-    <td>Elapsed time</td>
-    <td>188.38 secs</td>
-    <td>64.76 secs</td>
-  </tr>
-  <tr>
-    <td>Data transferred</td>
-    <td>254.22 MB</td>
-    <td>280.63 MB</td>
-  </tr>
-  <tr>
-    <td>Response time</td>
-    <td>1.32 secs</td>
-    <td>0.03 secs</td>
-  </tr>
-  <tr>
-    <td>Transaction rate</td>
-    <td>53.08 trans/sec</td>
-    <td>154.42 trans/sec</td>
-  </tr>
-  <tr>
-    <td>Throughput</td>
-    <td>1.35 MB/sec</td>
-    <td>4.33 MB/sec</td>
-  </tr>
-  <tr>
-    <td>Concurrency</td>
-    <td>70.22</td>
-    <td>4.83</td>
-  </tr>
-  <tr>
-    <td>Successful transactions</td>
-    <td>10000</td>
-    <td>10000</td>
-  </tr>
-  <tr>
-    <td>Failed transactions</td>
-    <td>0</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Longest transaction</td>
-    <td>2.31</td>
-    <td>0.01</td>
-  </tr>
-  <tr>
-    <td>Shortest transaction</td>
-    <td>0.70</td>
-    <td>0.00</td>
-  </tr>
-</table>
+(these results will be revised and reposted soon)
 
 ### Returning 'hello world' response
 
