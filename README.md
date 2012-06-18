@@ -242,62 +242,62 @@ Benchmarking command: **siege -c100 -b -r100 http://localhost:1337/concat**
   </tr>
   <tr>
     <td>Elapsed time</td>
-    <td>98.30 secs</td>
+    <td>20.17 secs</td>
     <td>61.27 secs</td>
     <td>35.83 secs</td>
   </tr>
   <tr>
     <td>Data transferred</td>
-    <td>412.94 MB</td>
-    <td>939.59 MB</td>
-    <td>939.59 MB</td>
+    <td>95.49 MB</td>
+    <td>95.49 MB</td>
+    <td>95.49 MB</td>
   </tr>
   <tr>
     <td>Response time</td>
-    <td>0.21 secs</td>
-    <td>0.59 secs</td>
-    <td>0.37 secs</td>
+    <td>0.20 secs</td>
+    <td>0.61 secs</td>
+    <td>0.34 secs</td>
   </tr>
   <tr>
     <td>Transaction rate</td>
-    <td>473.13 trans/sec</td>
-    <td>169.20 trans/sec</td>
-    <td>266.08 trans/sec</td>
+    <td>495.79 trans/sec</td>
+    <td>163.21 trans/sec</td>
+    <td>279.10 trans/sec</td>
   </tr>
   <tr>
     <td>Throughput</td>
-    <td>4.45 MB/sec</td>
-    <td>1.59 MB/sec</td>
-    <td>2.50 MB/sec</td>
+    <td>4.73 MB/sec</td>
+    <td>1.56 MB/sec</td>
+    <td>2.67 MB/sec</td>
   </tr>
   <tr>
     <td>Concurrency</td>
-    <td>99.21</td>
-    <td>99.93</td>
-    <td>98.41</td>
+    <td>99.47</td>
+    <td>99.53</td>
+    <td>94.48</td>
   </tr>
   <tr>
     <td>Successful transactions</td>
-    <td>43949</td>
-    <td>100000</td>
-    <td>100000</td>
+    <td>10000</td>
+    <td>10000</td>
+    <td>10000</td>
   </tr>
   <tr>
     <td>Failed transactions</td>
-    <td>1037</td>
+    <td>0</td>
     <td>0</td>
     <td>0</td>
   </tr>
   <tr>
     <td>Longest transaction</td>
-    <td>0.97</td>
-    <td>1.47</td>
-    <td>2.84</td>
+    <td>0.48</td>
+    <td>1.34</td>
+    <td>2.24</td>
   </tr>
   <tr>
     <td>Shortest transaction</td>
     <td>0.00</td>
-    <td>0.00</td>
+    <td>0.01</td>
     <td>0.00</td>
   </tr>
   <tr>
@@ -309,12 +309,10 @@ Benchmarking command: **siege -c100 -b -r100 http://localhost:1337/concat**
   <tr>
     <td>Memory consumed</td>
     <td>30 MB</td>
-    <td>310 MB</td>
-    <td>395 MB</td>
+    <td>320 MB</td>
+    <td>360 MB</td>
   </tr>
 </table>
-
-
 
 ### Fibonacci
 
