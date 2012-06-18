@@ -214,7 +214,7 @@ Benchmarking command: **siege -c100 -b -r1000 http://localhost:1337/hello**
 </table>
 
 * 2.1 was aborted by Siege due to 'excessive socket failure'.
-* 2.3 I noticed one second GC pause.
+* In 2.3 I noticed one second GC pause.
 
 ### String concatenation
 
