@@ -51,8 +51,8 @@ Benchmarking command: **siege -c100 -d1 -r100 http://localhost:1337/post**
 <table>
   <tr>
     <th></th>
-    <th>[2.1] Node.js (default)</th>
-    <th>[2.2] vert.x (default)</th>
+    <th>[1.1] Node.js (default)</th>
+    <th>[1.2] vert.x (default)</th>
   </tr>
   <tr>
     <td>Transactions</td>
@@ -345,9 +345,9 @@ Benchmarking command: **siege -c100 -b -r10 http://localhost:1337/fibonacci**
 <table>
   <tr>
     <th></th>
-    <th>[3.1] Node.js (default)</th>
-    <th>[3.2] vert.x (default)</th>
-    <th>[3.3] vert.x (4 instances)</th>
+    <th>[4.1] Node.js (default)</th>
+    <th>[4.2] vert.x (default)</th>
+    <th>[4.3] vert.x (4 instances)</th>
   </tr>
   <tr>
     <td>Transactions</td>
@@ -444,7 +444,7 @@ Conclusions
 
 * Dummy database constrained benchmarks favors 3x vert.x over Node.js.
 * As for 'requests per second' it's 3.5x faster (7x using both processor cores, but this is unfair).
-* Vert.x sent more data down the tubes, ~~I suppose it's caused by different 'Date' header formatting ~~(it uses Rhino's NativeDate instead of JavaScript's Date)~~. It also prints slightly longer 'X-Response-Timeout' (e.g. 13.0 instead of 13). I might look into it in the future.~~ I tried to even out basic benchmarks by adding extra data to headers. The problem is, vert.x's database persistor uses different/longer '_id' format (looks like some kind of UUID) than Mongoose, the 'Date' string returned is longer as well.
+* Vert.x sent more data down the tubes, ~~I suppose it's caused by different 'Date' header formatting~~ (it uses Rhino's NativeDate instead of JavaScript's Date) ~~. It also prints slightly longer 'X-Response-Timeout' (e.g. 13.0 instead of 13). I might look into it in the future.~~ I tried to even out basic benchmarks by adding extra data to headers. The problem is, vert.x's database persistor uses different/longer '_id' format (looks like some kind of UUID) than Mongoose, the 'Date' string returned is longer as well.
 * Native string manipulation (simple concat) in V8 seems faster than JVM's.
 * It looks like recursive Fibonacci's fans should go with Node.js.
 
