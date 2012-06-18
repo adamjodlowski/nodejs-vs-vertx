@@ -17,6 +17,13 @@ Testing environment
 
 Yes. It's a laptop.
 
+* Node.js v0.6.6
+* vert.x v1.0.1.final
+
+* ulimit = unlimited
+
+Default V8/JVM and Node.js/vert.x settings unless stated otherwise.
+
 Fairness considerations
 -----------------------
 
@@ -37,13 +44,13 @@ Request adds a random JSON document to database:
 
 and gets 100 already stored documents in response.
 
-Benchmarking command: siege -c100 -d1 -r100 http://localhost:1337/post
+Benchmarking command: **siege -c100 -d1 -r100 http://localhost:1337/post**
 
 <table>
   <tr>
     <th></th>
-    <th>Node.js (default)</th>
-    <th>vert.x (default)</th>
+    <th>[1.1] Node.js (default)</th>
+    <th>[1.2] vert.x (default)</th>
   </tr>
   <tr>
     <td>Transactions</td>
@@ -109,82 +116,123 @@ Benchmarking command: siege -c100 -d1 -r100 http://localhost:1337/post
 
 ### Returning 'hello world' response
 
-Short JSON was returned in response to every request, no calculations performed. Node.js benchmark was aborted by Siege due to 'excessive socket failure'.
+Short JSON was returned in response to every request, no calculations performed.
 
-Benchmarking command: siege -c100 -b -r1000 http://localhost:1337/hello
+Benchmarking command: **siege -c100 -b -r1000 http://localhost:1337/hello**
 
 <table>
   <tr>
     <th></th>
-    <th>Node.js (default)</th>
-    <th>vert.x (default)</th>
+    <th>[2.1] Node.js (default)</th>
+    <th>[2.2] vert.x (default)</th>
+    <th>[2.3] vert.x (4 instances)</th>
   </tr>
   <tr>
     <td>Transactions</td>
     <td>40066 hits</td>
+    <td>100000 hits</td>
     <td>100000 hits</td>
   </tr>
   <tr>
     <td>Availability</td>
     <td>97.48 %</td>
     <td>100.00 %</td>
+    <td>100.00 %</td>
   </tr>
   <tr>
     <td>Elapsed time</td>
     <td>38.03 secs</td>
     <td>27.02 secs</td>
+    <td>15.05 secs</td>
   </tr>
   <tr>
     <td>Data transferred</td>
     <td>0.73 MB</td>
+    <td>1.81 MB</td>
     <td>1.81 MB</td>
   </tr>
   <tr>
     <td>Response time</td>
     <td>0.09 secs</td>
     <td>0.01 secs</td>
+    <td>0.01 secs</td>
   </tr>
   <tr>
     <td>Transaction rate</td>
     <td>1053.54 trans/sec</td>
     <td>3700.96 trans/sec</td>
+    <td>6644.52 trans/sec</td>
   </tr>
   <tr>
     <td>Throughput</td>
     <td>0.02 MB/sec</td>
     <td>0.07 MB/sec</td>
+    <td>0.12 MB/sec</td>
   </tr>
   <tr>
     <td>Concurrency</td>
     <td>95.47</td>
     <td>44.63</td>
+    <td>40.78</td>
   </tr>
   <tr>
     <td>Successful transactions</td>
     <td>40066</td>
+    <td>100000</td>
     <td>100000</td>
   </tr>
   <tr>
     <td>Failed transactions</td>
     <td>1036</td>
     <td>0</td>
+    <td>0</td>
   </tr>
   <tr>
     <td>Longest transaction</td>
     <td>0.45</td>
     <td>3.10</td>
+    <td>3.06</td>
   </tr>
   <tr>
     <td>Shortest transaction</td>
     <td>0.00</td>
     <td>0.00</td>
+    <td>0.00</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Memory consumed</td>
+    <td>30 MB</td>
+    <td>55 MB</td>
+    <td>120 MB</td>
   </tr>
 </table>
+
+* 2.1 was aborted by Siege due to 'excessive socket failure'.
+* 2.3 I noticed one second GC pause.
+
+### String concatenation
+
+TODO
+
+### Fibonacci
+
+TODO
+
+### Webpage render
+
+TODO
 
 Conclusions
 -----------
 
 * Vert.x sent more data down the tubes, I suppose it's caused by different 'Date' header formatting (it uses Rhino's NativeDate instead of JavaScript's Date). It also prints slightly longer 'X-Response-Timeout' (e.g. 13.0 instead of 13). I might look into it in the future.
+* Native string manipulation (simple concat) in V8 destroys JVM's.
 
 Fun facts
 ---------
