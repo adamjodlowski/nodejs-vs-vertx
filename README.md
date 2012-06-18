@@ -129,69 +129,170 @@ Benchmarking command: **siege -c100 -b -r1000 http://localhost:1337/hello**
   </tr>
   <tr>
     <td>Transactions</td>
-    <td>40066 hits</td>
+    <td>39515 hits</td>
     <td>100000 hits</td>
     <td>100000 hits</td>
   </tr>
   <tr>
     <td>Availability</td>
-    <td>97.48 %</td>
+    <td>97.37 %</td>
     <td>100.00 %</td>
     <td>100.00 %</td>
   </tr>
   <tr>
     <td>Elapsed time</td>
-    <td>38.03 secs</td>
-    <td>27.02 secs</td>
-    <td>15.05 secs</td>
+    <td>39.72 secs</td>
+    <td>22.41 secs</td>
+    <td>13.84 secs</td>
   </tr>
   <tr>
     <td>Data transferred</td>
-    <td>0.73 MB</td>
+    <td>1.21 MB</td>
     <td>1.81 MB</td>
     <td>1.81 MB</td>
   </tr>
   <tr>
     <td>Response time</td>
     <td>0.09 secs</td>
-    <td>0.01 secs</td>
+    <td>0.02 secs</td>
     <td>0.01 secs</td>
   </tr>
   <tr>
     <td>Transaction rate</td>
-    <td>1053.54 trans/sec</td>
-    <td>3700.96 trans/sec</td>
-    <td>6644.52 trans/sec</td>
+    <td>994.84 trans/sec</td>
+    <td>4462.29 trans/sec</td>
+    <td>7225.43 trans/sec</td>
   </tr>
   <tr>
     <td>Throughput</td>
-    <td>0.02 MB/sec</td>
-    <td>0.07 MB/sec</td>
-    <td>0.12 MB/sec</td>
+    <td>0.03 MB/sec</td>
+    <td>0.08 MB/sec</td>
+    <td>0.13 MB/sec</td>
   </tr>
   <tr>
     <td>Concurrency</td>
-    <td>95.47</td>
-    <td>44.63</td>
-    <td>40.78</td>
+    <td>93.96</td>
+    <td>87.33</td>
+    <td>38.29</td>
   </tr>
   <tr>
     <td>Successful transactions</td>
-    <td>40066</td>
+    <td>39515</td>
     <td>100000</td>
     <td>100000</td>
   </tr>
   <tr>
     <td>Failed transactions</td>
-    <td>1036</td>
+    <td>1066</td>
     <td>0</td>
     <td>0</td>
   </tr>
   <tr>
     <td>Longest transaction</td>
-    <td>0.45</td>
-    <td>3.10</td>
-    <td>3.06</td>
+    <td>0.64</td>
+    <td>3.01</td>
+    <td>3.01</td>
+  </tr>
+  <tr>
+    <td>Shortest transaction</td>
+    <td>0.00</td>
+    <td>0.00</td>
+    <td>0.00</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Memory consumed</td>
+    <td>35 MB</td>
+    <td>60 MB</td>
+    <td>83 MB</td>
+  </tr>
+</table>
+
+* 2.1 was aborted by Siege due to 'excessive socket failure'.
+
+### String concatenation
+
+Random 10000 characters long strings were returned to this requests. No buffers were used, just plain old strings and concatenation (one character at a time).
+
+Benchmarking command: **siege -c100 -b -r100 http://localhost:1337/concat**
+
+<table>
+  <tr>
+    <th></th>
+    <th>[3.1] Node.js (default)</th>
+    <th>[3.2] vert.x (default)</th>
+    <th>[3.3] vert.x (4 instances)</th>
+  </tr>
+  <tr>
+    <td>Transactions</td>
+    <td>10000 hits</td>
+    <td>10000 hits</td>
+    <td>10000 hits</td>
+  </tr>
+  <tr>
+    <td>Availability</td>
+    <td>100.00 %</td>
+    <td>100.00 %</td>
+    <td>100.00 %</td>
+  </tr>
+  <tr>
+    <td>Elapsed time</td>
+    <td>98.30 secs</td>
+    <td>61.27 secs</td>
+    <td>35.83 secs</td>
+  </tr>
+  <tr>
+    <td>Data transferred</td>
+    <td>412.94 MB</td>
+    <td>939.59 MB</td>
+    <td>939.59 MB</td>
+  </tr>
+  <tr>
+    <td>Response time</td>
+    <td>0.21 secs</td>
+    <td>0.59 secs</td>
+    <td>0.37 secs</td>
+  </tr>
+  <tr>
+    <td>Transaction rate</td>
+    <td>473.13 trans/sec</td>
+    <td>169.20 trans/sec</td>
+    <td>266.08 trans/sec</td>
+  </tr>
+  <tr>
+    <td>Throughput</td>
+    <td>4.45 MB/sec</td>
+    <td>1.59 MB/sec</td>
+    <td>2.50 MB/sec</td>
+  </tr>
+  <tr>
+    <td>Concurrency</td>
+    <td>99.21</td>
+    <td>99.93</td>
+    <td>98.41</td>
+  </tr>
+  <tr>
+    <td>Successful transactions</td>
+    <td>43949</td>
+    <td>100000</td>
+    <td>100000</td>
+  </tr>
+  <tr>
+    <td>Failed transactions</td>
+    <td>1037</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Longest transaction</td>
+    <td>0.97</td>
+    <td>1.47</td>
+    <td>2.84</td>
   </tr>
   <tr>
     <td>Shortest transaction</td>
@@ -208,17 +309,12 @@ Benchmarking command: **siege -c100 -b -r1000 http://localhost:1337/hello**
   <tr>
     <td>Memory consumed</td>
     <td>30 MB</td>
-    <td>55 MB</td>
-    <td>120 MB</td>
+    <td>310 MB</td>
+    <td>395 MB</td>
   </tr>
 </table>
 
-* 2.1 was aborted by Siege due to 'excessive socket failure'.
-* In 2.3 I noticed one second GC pause.
 
-### String concatenation
-
-TODO
 
 ### Fibonacci
 
@@ -226,13 +322,13 @@ TODO
 
 ### Webpage render
 
-TODO
+ETA: end of June
 
 Conclusions
 -----------
 
 * Vert.x sent more data down the tubes, I suppose it's caused by different 'Date' header formatting (it uses Rhino's NativeDate instead of JavaScript's Date). It also prints slightly longer 'X-Response-Timeout' (e.g. 13.0 instead of 13). I might look into it in the future.
-* Native string manipulation (simple concat) in V8 destroys JVM's.
+* Native string manipulation (simple concat) in V8 seems faster than JVM's.
 
 Fun facts
 ---------
