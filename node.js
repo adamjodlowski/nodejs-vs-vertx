@@ -76,13 +76,13 @@ server.get('/hello', function(req, res) {
 
 });
 
-// render route handler
+// concat route handler
 
-server.get('/render', function(req, res) {
+server.get('/concat', function(req, res) {
 
   var response = randomString(10000);
 
-  res.send(200, {page: response});
+  res.send(200, {concat: response});
 
 });
 

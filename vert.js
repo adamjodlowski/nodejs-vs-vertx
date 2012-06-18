@@ -134,9 +134,9 @@ routeMatcher.get('/hello', function(req, res) {
 
 });
 
-// render route handler
+// concat route handler
 
-routeMatcher.get('/render', function(req, res) {
+routeMatcher.get('/concat', function(req, res) {
 
   var startDate = new Date();
 
@@ -152,7 +152,7 @@ routeMatcher.get('/render', function(req, res) {
     'Server': 'vert.x vs Node.js server'
   });
 
-  req.response.end(JSON.stringify({page: response}));
+  req.response.end(JSON.stringify({concat: response}));
   req.response.close();
 
 });
