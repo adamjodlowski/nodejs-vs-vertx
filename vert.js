@@ -62,8 +62,8 @@ routeMatcher.get('/post', function(req, res) {
             'Content-Type': 'application/json',
             'Date': endDate.toString(),
             'Connection': 'close',
-            'X-Response-Time': endDate - startDate,
-            'Server': 'vert.x vs Node.js server'
+            'X-Response-Time': endDate - startDate/*,
+            'Server': 'vert.x vs Node.js server'*/
           });
 
           req.response.end(response);
@@ -79,8 +79,8 @@ routeMatcher.get('/post', function(req, res) {
             'Content-Type': 'application/json',
             'Date': endDate.toString(),
             'Connection': 'close',
-            'X-Response-Time': endDate - startDate,
-            'Server': 'vert.x vs Node.js server'
+            'X-Response-Time': endDate - startDate/*,
+            'Server': 'vert.x vs Node.js server'*/
           });
 
           req.response.end(response);
@@ -100,8 +100,8 @@ routeMatcher.get('/post', function(req, res) {
         'Content-Type': 'application/json',
         'Date': endDate.toString(),
         'Connection': 'close',
-        'X-Response-Time': endDate - startDate,
-        'Server': 'vert.x vs Node.js server'
+        'X-Response-Time': endDate - startDate/*,
+        'Server': 'vert.x vs Node.js server'*/
       });
 
       req.response.end(response);
@@ -125,8 +125,8 @@ routeMatcher.get('/hello', function(req, res) {
     'Content-Type': 'application/json',
     'Date': endDate.toString(),
     'Connection': 'close',
-    'X-Response-Time': endDate - startDate,
-    'Server': 'vert.x vs Node.js server'
+    'X-Response-Time': endDate - startDate/*,
+    'Server': 'vert.x vs Node.js server'*/
   });
 
   req.response.end(JSON.stringify({message: 'hello'}));
@@ -148,8 +148,8 @@ routeMatcher.get('/concat', function(req, res) {
     'Content-Type': 'application/json',
     'Date': endDate.toString(),
     'Connection': 'close',
-    'X-Response-Time': endDate - startDate,
-    'Server': 'vert.x vs Node.js server'
+    'X-Response-Time': endDate - startDate/*,
+    'Server': 'vert.x vs Node.js server'*/
   });
 
   req.response.end(JSON.stringify({concat: response}));
@@ -171,8 +171,8 @@ routeMatcher.get('/fibonacci', function(req, res) {
     'Content-Type': 'application/json',
     'Date': endDate.toString(),
     'Connection': 'close',
-    'X-Response-Time': endDate - startDate,
-    'Server': 'vert.x vs Node.js server'
+    'X-Response-Time': endDate - startDate/*,
+    'Server': 'vert.x vs Node.js server'*/
   });
 
   req.response.end(JSON.stringify({fibonacci: 'calculated'}));
@@ -193,7 +193,7 @@ var randomString = function(_len) {
   var rand;
   
   for(var i = 0; i < len; i++) {
-    rand = Math.floor(Math.random()*(alphabet.length+1));
+    rand = Math.floor(Math.random()*(alphabet.length));
     result += alphabet.substring(rand, rand + 1);
   }
     

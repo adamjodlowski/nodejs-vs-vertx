@@ -72,7 +72,7 @@ server.get('/post', function(req, res) {
 
 server.get('/hello', function(req, res) {
 
-  res.send(200, {message: 'hello'});
+  res.send(200, {message: 'hello', extra: 'xx'});
 
 });
 
@@ -92,7 +92,7 @@ server.get('/fibonacci', function(req, res) {
 
   fibonacci(30);
 
-  res.send(200, {fibonacci: 'calculated'});
+  res.send(200, {fibonacci: 'calculated', extra: 'xx'});
 
 });     
 
@@ -111,9 +111,9 @@ var randomString = function(_len) {
   var len = _len || 160;
   var result = '';
   var rand;
-  
+
   for(var i = 0; i < len; i++) {
-    rand = Math.floor(Math.random()*(alphabet.length+1));
+    rand = Math.floor(Math.random()*(alphabet.length));
     result += alphabet.substring(rand, rand + 1);
   }
     
